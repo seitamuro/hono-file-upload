@@ -12,6 +12,7 @@ export class HonoFileUploadStack extends cdk.Stack {
     super(scope, id, props);
 
     const bucket = new s3.Bucket(this, "Bucket", {
+      autoDeleteObjects: true,
       removalPolicy: cdk.RemovalPolicy.DESTROY,
       bucketName: "hono-file-upload-bucket-seimiura",
     });
