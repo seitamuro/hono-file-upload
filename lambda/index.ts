@@ -18,6 +18,23 @@ const storage = new HonoS3Storage({
   client: client,
 });
 
+app.get("/", (c) => {
+  return c.html(`
+      <html>
+        <body>
+          <form
+            action="${process.env.UPLOAD_URL}upload"
+            method="post"
+            enctype="multipart/form-data"
+          >
+            <input type="file" name="file" />
+            <input type="submit" value="Upload" />
+          </form>
+        </body>
+      </html>
+      `);
+});
+
 app.post("/upload", storage.single("file"), async (c) => {
   const { file } = c.var.files;
   if (file) {
