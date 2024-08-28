@@ -23,7 +23,7 @@ app.get("/", (c) => {
       <html>
         <body>
           <form
-            action="${process.env.UPLOAD_URL}upload"
+            action="/upload"
             method="post"
             enctype="multipart/form-data"
           >
